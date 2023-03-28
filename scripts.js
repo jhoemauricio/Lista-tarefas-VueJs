@@ -21,7 +21,12 @@ const todosApp = {
         //retorna um objeto
         return {
             //dados da variavel global
-            todos: window.todos
+            todos: window.todos,
+
+            //nova propriedade para adicionar nova tarefa
+            newTodo: {
+                done: false
+            }
         }
     }
 
