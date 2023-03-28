@@ -28,6 +28,25 @@ const todosApp = {
                 done: false
             }
         }
+    },
+    methods: {
+        //método para adicionar a tarefa
+        addTodo: function(){
+
+            //verifica se a propriedade text tem alguma coisa escrita
+            if(this.newTodo.text){
+                     //pega o array 'todos' e adiciona o novo objeto
+            this.todos.push(this.newTodo);
+            //o objeto volta ao estado original limpando assim os campos do formulário
+            this.newTodo = {
+                done: false
+            }
+
+            } else {
+                alert("To-do text is required");
+            }
+       
+        }
     }
 
 }
