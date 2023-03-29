@@ -17,7 +17,7 @@
 const todosApp = {
 
     //dados da aplicação
-    data(){
+    data() {
         //retorna um objeto
         return {
             //dados da variavel global
@@ -31,25 +31,49 @@ const todosApp = {
     },
     methods: {
         //método para adicionar a tarefa
-        addTodo: function(){
+        addTodo: function () {
 
             //verifica se a propriedade text tem alguma coisa escrita
-            if(this.newTodo.text){
-                     //pega o array 'todos' e adiciona o novo objeto
-            this.todos.push(this.newTodo);
-            //o objeto volta ao estado original limpando assim os campos do formulário
-            this.newTodo = {
-                done: false
-            }
-
+            if (this.newTodo.text) {
+                //pega o array 'todos' e adiciona o novo objeto
+                this.todos.push(this.newTodo);
+                //o objeto volta ao estado original limpando assim os campos do formulário
+                this.newTodo = {
+                    done: false
+                }
+                //armazena no localstorage
+                localStorage.setItem("todos", JSON.stringify(this.todos));
             } else {
                 alert("To-do text is required");
             }
-       
+
         }
+    },
+
+    // Lifecycle Hooks
+    //antes de montar o html esse puxa as informações do localstorage
+    // beforeCreate() {
+    //     console.log("Before createdddddd");
+
+    // },
+
+    //ao ser criado é  carregado o localstorage
+    created() {
+        // console.log('CREATEEE');
+        this.todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")): this.todos;
+    },
+
+    updated(){
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+
     }
+
+    // beforeUpdate() {
+    //     console.log('Berforeeee Update');
+    // }
 
 }
 
 //inicializa a aplicação
- Vue.createApp(todosApp).mount('#app');
+Vue.createApp(todosApp).mount('#app');
+
