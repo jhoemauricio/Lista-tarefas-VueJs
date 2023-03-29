@@ -24,12 +24,13 @@
                     <div
                         v-for="todo in todos"
                         class="single-todo"
-                        :class="{ done : todo.done }">
+                        :class="{ done : todo.done }"
+                        @click="todo.done = !todo.done">
                         <p> {{ todo.text }} </p>
                     </div>
                 </div>
 
-                <button class="clear">Limpar tudo</button>
+                <button class="clear" @click="todos=[]" v-if="todos.length">Limpar tudo</button>
 
                 <!--O que for escrito será levado para a propriedade text-->
                 <input type="text" placeholder="Escreva uma nova tarefa..." v-model="newTodo.text">

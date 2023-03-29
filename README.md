@@ -1,4 +1,5 @@
 # Lista-tarefas-VueJs
+Desenvolvido no curso de VUEJS.
 
 Sistema de lista de tarefas ao qual pode-se adicionar e marcar tarefas já realizadas.
 
